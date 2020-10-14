@@ -4,6 +4,7 @@ import { WalletsResponseModel } from './models/wallets-response.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { WalletModel } from './models/wallet.model';
 
+
 @Component({
 	selector: 'app-wallet-list',
 	templateUrl: './wallet-list.component.html',
