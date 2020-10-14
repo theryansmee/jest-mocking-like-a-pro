@@ -13,11 +13,11 @@ import { WalletModel } from './models/wallet.model';
 export class WalletListComponent implements OnInit, OnChanges {
 
 
-	public totalActualBalance: number;
-
 	public wallets: WalletModel[];
 
 	public negativeWallets: WalletModel[];
+
+	public totalActualBalance: number;
 
 	public lastUpdated: Date;
 
@@ -30,7 +30,7 @@ export class WalletListComponent implements OnInit, OnChanges {
 	}
 
 	ngOnChanges( changes: SimpleChanges ): void {
-		if ( changes.wallets.currentValue !== changes.wallets.previousValue ) {
+		if ( changes.wallets?.currentValue !== changes.wallets?.previousValue ) {
 			const wallets: WalletModel[] =
 				changes.wallets.currentValue;
 
@@ -87,14 +87,14 @@ export class WalletListComponent implements OnInit, OnChanges {
 				(
 					startValue: number,
 					wallet: WalletModel
-				) => wallet.balance.actualBalance + startValue, 0
+				) => wallet?.balance?.actualBalance + startValue, 0
 			);
 	}
 
 	public separateNegativeBalanceWallets ( wallets: WalletModel[] ): WalletModel[] {
 		return wallets
 			.filter(
-				( wallet: WalletModel ) => wallet.balanceInBaseCurrency.actualBalance < 0
+				( wallet: WalletModel ) => wallet?.balanceInBaseCurrency?.actualBalance < 0
 			);
 	}
 
