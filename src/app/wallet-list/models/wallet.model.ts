@@ -1,9 +1,7 @@
 import { CurrencyEnum } from './currency.enum';
+import { AmountModel } from './amount.model';
+import { TransactionModel } from './transaction.model';
 
-export interface AmountModel {
-	actualBalance: number;
-	availableBalance: number;
-}
 
 export interface WalletModel {
 	id: string;
@@ -13,4 +11,5 @@ export interface WalletModel {
 	balance: AmountModel;
 	balanceInBaseCurrency: AmountModel;
 	isDisabled: boolean;
+	latestTransactions?: TransactionModel[];
 }
