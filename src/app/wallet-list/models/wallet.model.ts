@@ -5,7 +5,7 @@ import { TransactionModel } from './transaction.model';
 
 export interface WalletModel {
 	id: string;
-	alias?: string;
+	alias: string;
 	currency: CurrencyEnum;
 	baseCurrency: CurrencyEnum;
 	balance: AmountModel;
