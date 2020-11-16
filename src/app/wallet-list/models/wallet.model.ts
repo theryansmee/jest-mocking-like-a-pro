@@ -1,6 +1,7 @@
 import { CurrencyEnum } from './currency.enum';
 import { AmountModel } from './amount.model';
 import { TransactionModel } from './transaction.model';
+import { PermissionsModel } from './permissions.model';
 
 
 export interface WalletModel {
@@ -12,4 +13,5 @@ export interface WalletModel {
 	balanceInBaseCurrency: AmountModel;
 	isDisabled: boolean;
 	latestTransactions?: TransactionModel[];
+	// permissions: PermissionsModel;
 }

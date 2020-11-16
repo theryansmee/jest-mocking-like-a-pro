@@ -1,8 +1,9 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WalletListService } from './service/wallet-list.service';
 import { WalletsResponseModel } from './models/wallets-response.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { WalletModel } from './models/wallet.model';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { WalletModel } from './models/wallet.model';
 	templateUrl: './wallet-list.component.html',
 	styleUrls: ['./wallet-list.component.scss']
 })
-export class WalletListComponent implements OnInit, OnChanges {
+export class WalletListComponent implements OnInit {
 
 
 	public wallets: WalletModel[];
@@ -29,20 +30,16 @@ export class WalletListComponent implements OnInit, OnChanges {
 		this.getWallets();
 	}
 
-	ngOnChanges( changes: SimpleChanges ): void {
-		if ( changes.wallets?.currentValue !== changes.wallets?.previousValue ) {
-			const wallets: WalletModel[] =
-				changes.wallets.currentValue;
-
-			this.negativeWallets =
-				this.separateNegativeBalanceWallets ( wallets );
-		}
-	}
-
-
 	public getWallets (): void {
 		this.walletListService
 			.getWallets()
+			.pipe(
+				tap(
+					( walletsResponse: WalletsResponseModel ) =>
+						this.negativeWallets =
+							this.separateNegativeBalanceWallets ( walletsResponse?.data?.wallets )
+				)
+			)
 			.subscribe(
 				( walletsResponse: WalletsResponseModel ) => this.handleGetWalletsSuccess( walletsResponse ),
 				( error: HttpErrorResponse ) => this.handleGetWalletsError( error )
@@ -60,11 +57,19 @@ export class WalletListComponent implements OnInit, OnChanges {
 		this.wallets =
 			this.orderWallets( wallets );
 
+		// if (
+		// 	wallets.length
+		// 	&& wallets[ 0 ].permissions.canEdit
+		// 	&& wallets[ 0 ].permissions.canDisable
+		// ) {
+		// 	// .. Do some more stuff here
+		// }
+
 		this.lastUpdated = lastUpdated;
 	}
 
 	public handleGetWalletsError ( error: HttpErrorResponse ): void {
-		// ...Do some error stuff here
+		// .. Do some error stuff here
 		console.log( { error } );
 	}
 
@@ -91,7 +96,7 @@ export class WalletListComponent implements OnInit, OnChanges {
 			);
 	}
 
-	public separateNegativeBalanceWallets ( wallets: WalletModel[] ): WalletModel[] {
+	public separateNegativeBalanceWallets ( wallets: WalletModel[] = [] ): WalletModel[] {
 		return wallets
 			.filter(
 				( wallet: WalletModel ) => wallet?.balanceInBaseCurrency?.actualBalance < 0
