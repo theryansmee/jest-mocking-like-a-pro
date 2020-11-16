@@ -13,5 +13,5 @@ export interface WalletModel {
 	balanceInBaseCurrency: AmountModel;
 	isDisabled: boolean;
 	latestTransactions?: TransactionModel[];
-	// permissions: PermissionsModel;
+	permissions: PermissionsModel;
 }

@@ -57,13 +57,13 @@ export class WalletListComponent implements OnInit {
 		this.wallets =
 			this.orderWallets( wallets );
 
-		// if (
-		// 	wallets.length
-		// 	&& wallets[ 0 ].permissions.canEdit
-		// 	&& wallets[ 0 ].permissions.canDisable
-		// ) {
-		// 	// .. Do some more stuff here
-		// }
+		if (
+			wallets.length
+			&& wallets[ 0 ].permissions.canEdit
+			&& wallets[ 0 ].permissions.canDisable
+		) {
+			// .. Do some more stuff here
+		}
 
 		this.lastUpdated = lastUpdated;
 	}

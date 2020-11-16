@@ -2,6 +2,9 @@ import { WalletListComponent } from './wallet-list.component';
 import { of } from 'rxjs';
 import { WalletModel } from './models/wallet.model';
 import { WalletsResponseModel } from './models/wallets-response.model';
+import { WalletMock } from './models/wallet.mock';
+import { AmountMock } from './models/amount.mock';
+import { WalletResponseMock } from './models/wallet-response.mock';
 
 
 describe('WalletListComponent', () => {
@@ -26,28 +29,28 @@ describe('WalletListComponent', () => {
 			let walletResponse: WalletsResponseModel;
 
 			beforeEach( () => {
-				wallet1 = {
-					id: 'wallet1',
-					alias: 'My wallet B'
-				} as WalletModel;
-				wallet2 = {
-					id: 'wallet2',
-					alias: 'My wallet A'
-				} as WalletModel;
-				wallet3 = {
-					id: 'wallet3',
-					alias: 'My wallet C'
-				} as WalletModel;
-				walletResponse = {
-					data: {
-						wallets: [
-							wallet1,
-							wallet2,
-							wallet3
-						],
-						lastUpdated: new Date()
-					}
-				};
+				wallet1 =
+					new WalletMock()
+						.withAlias( 'My wallet B' )
+						.model();
+				wallet2 =
+					new WalletMock()
+						.withAlias( 'My wallet A' )
+						.model();
+				wallet3 =
+					new WalletMock()
+						.withAlias( 'My wallet C' )
+						.model();
+				walletResponse =
+					new WalletResponseMock()
+						.withWallets(
+							[
+								wallet1,
+								wallet2,
+								wallet3
+							]
+						)
+						.model();
 
 				walletListServiceMock
 					.getWallets
@@ -88,25 +91,25 @@ describe('WalletListComponent', () => {
 		let walletResponse: WalletsResponseModel;
 
 		beforeEach( () => {
-			wallet1 = {
-				id: 'wallet1',
-			} as WalletModel;
-			wallet2 = {
-				id: 'wallet2',
-			} as WalletModel;
-			wallet3 = {
-				id: 'wallet3',
-			} as WalletModel;
-			walletResponse = {
-				data: {
-					wallets: [
-						wallet1,
-						wallet2,
-						wallet3
-					],
-					lastUpdated: new Date()
-				}
-			};
+			wallet1 =
+				new WalletMock()
+					.model();
+			wallet2 =
+				new WalletMock()
+					.model();
+			wallet3 =
+				new WalletMock()
+					.model();
+			walletResponse =
+				new WalletResponseMock()
+					.withWallets(
+						[
+							wallet1,
+							wallet2,
+							wallet3
+						]
+					)
+					.model();
 		});
 
 		describe( 'set totalActualBalance', () => {
@@ -188,36 +191,46 @@ describe('WalletListComponent', () => {
 		let zeroWallet1: WalletModel;
 
 		beforeEach( () => {
-			positiveWallet1 = {
-				id: 'wallet1',
-				balanceInBaseCurrency: {
-					actualBalance: 1007.88
-				}
-			} as WalletModel;
-			positiveWallet2 = {
-				id: 'wallet2',
-				balanceInBaseCurrency: {
-					actualBalance: 0.001
-				}
-			} as WalletModel;
-			negativeWallet1 = {
-				id: 'wallet3',
-				balanceInBaseCurrency: {
-					actualBalance: -0.01
-				}
-			} as WalletModel;
-			negativeWallet2 = {
-				id: 'wallet4',
-				balanceInBaseCurrency: {
-					actualBalance: -20202020.00
-				}
-			} as WalletModel;
-			zeroWallet1 = {
-				id: 'wallet5',
-				balanceInBaseCurrency: {
-					actualBalance: 0
-				}
-			} as WalletModel;
+			positiveWallet1 =
+				new WalletMock()
+					.withBalanceInBaseCurrency(
+						new AmountMock()
+							.withActualBalance( 1007.88 )
+							.model()
+					)
+					.model();
+			positiveWallet2 =
+				new WalletMock()
+					.withBalanceInBaseCurrency(
+						new AmountMock()
+							.withActualBalance( 0.001 )
+							.model()
+					)
+					.model();
+			negativeWallet1 =
+				new WalletMock()
+					.withBalanceInBaseCurrency(
+						new AmountMock()
+							.withActualBalance( -0.01 )
+							.model()
+					)
+					.model();
+			negativeWallet2 =
+				new WalletMock()
+					.withBalanceInBaseCurrency(
+						new AmountMock()
+							.withActualBalance( -20202020.00 )
+							.model()
+					)
+					.model();
+			zeroWallet1 =
+				new WalletMock()
+					.withBalanceInBaseCurrency(
+						new AmountMock()
+							.withActualBalance( 0.00 )
+							.model()
+					)
+					.model();
 		});
 
 		it( 'should return blank array if NO negative wallets are passed', () => {
