@@ -4,7 +4,9 @@ import { CurrencyEnum } from './currency.enum';
 import { AmountMock } from './amount.mock';
 import { PermissionsMock } from './permissions.mock';
 
+
 export class WalletMock {
+
 
 	private _data: WalletModel = {
 		id: TestingUtilities.generateId(),
@@ -47,6 +49,7 @@ export class WalletMock {
 
 		return this;
 	}
+
 	public withBalance ( balance: WalletModel[ 'balance' ] ): WalletMock {
 		this._data.balance = balance;
 

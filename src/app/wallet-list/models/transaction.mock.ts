@@ -2,6 +2,7 @@ import { TransactionModel } from './transaction.model';
 import { TestingUtilities } from '../../shared/testing.utilities';
 import { AmountMock } from './amount.mock';
 
+
 export class TransactionMock {
 
 

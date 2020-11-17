@@ -1,7 +1,9 @@
 import { WalletsResponseModel } from './wallets-response.model';
 import { WalletMock } from './wallet.mock';
 
+
 export class WalletResponseMock {
+
 
 	private _data: WalletsResponseModel = {
 		data: {
@@ -19,6 +21,7 @@ export class WalletResponseMock {
 
 		return this;
 	}
+
 	public withLastUpdated ( lastUpdated: WalletsResponseModel[ 'data' ][ 'lastUpdated' ] ): WalletResponseMock {
 		this._data.data.lastUpdated = lastUpdated;
 

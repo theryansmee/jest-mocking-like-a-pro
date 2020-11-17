@@ -1,12 +1,15 @@
 import { PermissionsModel } from './permissions.model';
 
+
 export class PermissionsMock {
+
 
 	// Set default values
 	private _data: PermissionsModel = {
 		canEdit: false,
 		canDisable: false
 	};
+
 
 	// Updated any values
 	public withCanEdit( canEdit: boolean ): PermissionsMock {
@@ -20,6 +23,7 @@ export class PermissionsMock {
 
 		return this;
 	}
+
 
 	// Return data
 	public model (): PermissionsModel {

@@ -1,6 +1,8 @@
 import { AmountModel } from './amount.model';
 
+
 export class AmountMock {
+
 
 	private _data: AmountModel = {
 		actualBalance: 0.00,
