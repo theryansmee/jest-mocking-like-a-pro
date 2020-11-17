@@ -29,16 +29,19 @@ export class WalletMock {
 
 		return this;
 	}
+
 	public withAlias ( alias: WalletModel[ 'alias' ] ): WalletMock {
 		this._data.alias = alias;
 
 		return this;
 	}
+
 	public withCurrency ( currency: WalletModel[ 'currency' ] ): WalletMock {
 		this._data.currency = currency;
 
 		return this;
 	}
+
 	public withBaseCurrency ( baseCurrency: WalletModel[ 'baseCurrency' ] ): WalletMock {
 		this._data.baseCurrency = baseCurrency;
 
@@ -49,21 +52,25 @@ export class WalletMock {
 
 		return this;
 	}
+
 	public withBalanceInBaseCurrency ( balanceInBaseCurrency: WalletModel[ 'balanceInBaseCurrency' ] ): WalletMock {
 		this._data.balanceInBaseCurrency = balanceInBaseCurrency;
 
 		return this;
 	}
+
 	public withIsDisabled ( isDisabled: WalletModel[ 'isDisabled' ] ): WalletMock {
 		this._data.isDisabled = isDisabled;
 
 		return this;
 	}
+
 	public withLatestTransactions ( latestTransactions: WalletModel[ 'latestTransactions' ] ): WalletMock {
 		this._data.latestTransactions = latestTransactions;
 
 		return this;
 	}
+
 	public withPermissions ( permissions: WalletModel[ 'permissions' ] ): WalletMock {
 		this._data.permissions = permissions;
 
