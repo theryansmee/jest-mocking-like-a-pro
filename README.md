@@ -1,27 +1,28 @@
-# JestMockingLikeAPro
+# Mocking data like a pro tutorial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.27.
+## Description
+
+This project has been created to accompany my [Mocking data like a pro](https://youtu.be/ORxTs1sDyNM) video.
+
+In this video we cover the most robust and flexible way to mock data in Angular when writing unit tests. 
+
+With these new mocks we will:
+- Have access to default values
+- Be able to override any/all of the values with minimal effort
+
+We will also look at ways to speed up writing our mocks to ensure that you spend less time writing tests, and more time writing code!
+
+
+## Branches
+- `master` - Contains base project with tests written using the classic style of data mocks
+- `version/completed-mocks` - The finished product with our new any shiny data mock classes implimented
+
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Angular version
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+10.1.15
